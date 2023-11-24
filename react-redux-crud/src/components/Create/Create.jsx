@@ -1,14 +1,21 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createUser } from "../../features/userDetailSlice";
+import api from "../../common/api";
 
 const Create = () => {
+    console.log(api.defaults.baseURL);
   const [users, setusers] = useState({});
+  const dispatch = useDispatch();
   const getUserData = (e) => {
     setusers({ ...users, [e.target.name]: e.target.value });
     console.log(users);
   };
-  const handleSubmit=()=>{
-    // getUserData
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(users);
+    dispatch(createUser(users));
+  };
   return (
     <div>
       <h2 className="my-2">Fill the data</h2>

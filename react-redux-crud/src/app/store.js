@@ -1,8 +1,9 @@
-import {configureStore} from '@reduxjs/toolkit';
-import { userDetail } from '../features/userDetailSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import { userDetail } from "../features/userDetailSlice";
 
-export const store=configureStore({
-    reducer:{
-        app:userDetail,
-    }
-})
+export const store = configureStore({
+  reducer: {
+    app: userDetail,
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+});
